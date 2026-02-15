@@ -1,6 +1,6 @@
 import undetected_chromedriver as uc
 import shutil
-from shortcut import inject_numbers, REMOVE_NUMBERS 
+from shortcut import INJECT_NUMBERS, REMOVE_NUMBERS 
 
 # This script finds interactive elements and overlays a visible number on them
 
