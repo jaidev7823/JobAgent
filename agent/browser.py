@@ -1,47 +1,8 @@
 import undetected_chromedriver as uc
 import shutil
+from shortcut import inject_numbers, REMOVE_NUMBERS 
 
 # This script finds interactive elements and overlays a visible number on them
-INJECT_NUMBERS = """
-(function() {
-    // Remove any existing labels first
-    const existingLabels = document.querySelectorAll('.ai-label');
-    existingLabels.forEach(el => el.remove());
-
-    const selectors = 'a, button, input, select, textarea, [role="button"]';
-    const elements = document.querySelectorAll(selectors);
-    
-    let count = 0;
-    elements.forEach((el) => {
-        // Only label visible elements
-        const rect = el.getBoundingClientRect();
-        if (rect.width > 0 && rect.height > 0 && window.getComputedStyle(el).visibility !== 'hidden') {
-            
-            // 1. Set the attribute so the code can click it later
-            el.setAttribute('data-ai-idx', count);
-            
-            // 2. Create a visual label for the screenshot
-            const label = document.createElement('div');
-            label.className = 'ai-label';
-            label.innerText = count;
-            label.style.position = 'fixed';
-            label.style.top = rect.top + 'px';
-            label.style.left = rect.left + 'px';
-            label.style.backgroundColor = 'red';
-            label.style.color = 'white';
-            label.style.padding = '2px 5px';
-            label.style.fontSize = '12px';
-            label.style.fontWeight = 'bold';
-            label.style.zIndex = '9999999';
-            label.style.pointerEvents = 'none'; // Don't block clicks
-            label.style.borderRadius = '3px';
-            
-            document.body.appendChild(label);
-            count++;
-        }
-    });
-})();
-"""
 
 class BrowserAgent:
     def __init__(self):
