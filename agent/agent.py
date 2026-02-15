@@ -38,8 +38,8 @@ def run():
 
     browser.close()
 
-if not os.path.exists("outputs/screenshots"):
-    os.makedirs("outputs/screenshots")
+if not os.path.exists("agent/output/screenshots"):
+    os.makedirs("agent/output/screenshots")
 
 if __name__ == "__main__":
     run()

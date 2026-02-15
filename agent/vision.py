@@ -34,7 +34,7 @@ def decide_action(image_path, goal):
             "prompt": prompt,
             "images": [image_base64],
             "stream": False,
-            "format": "json" # Forces Ollama to output valid JSON
+            "format": "json" # Forces Ollama to agent/output valid JSON
         }, timeout=60)
 
         res_json = res.json()

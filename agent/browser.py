@@ -68,8 +68,8 @@ class BrowserAgent:
 
     def screenshot(self, name):
         import os
-        os.makedirs("outputs/screenshots", exist_ok=True)
-        path = f"outputs/screenshots/{name}.png"
+        os.makedirs("agent/output/screenshots", exist_ok=True)
+        path = f"agent/output/screenshots/{name}.png"
         self.driver.save_screenshot(path)
         return path
 
